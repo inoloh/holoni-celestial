@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Gallery site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript web application for browsing and viewing artwork. Built with Azure Functions and Azure Storage for serverless backend integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React, TypeScript, Tailwind CSS, Vite
+- **Backend**: Azure Functions (Node.js)
+- **Storage**: Azure Table Storage (metadata), Azure Blob Storage (images)
+- **Tooling**: Prettier, GitHub Actions, Vitest
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+### Setup Instructions
+
+#### 1. Clone the Repository and install dependencies
+
+```bash
+git clone https://github.com/inoloh/holoni-celestial.git
+cd holoni-celestial
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+#### 2. Configure environment variables
+Create a .env based on the example below
+```bash
+VITE_API_URL_GETALL=https://<your-azure-function-url>/api/getArtImages
+VITE_FUNCTION_KEY_GETALL=<your-azure-function-key>
+VITE_API_URL_GETBYID=https://<your-azure-function-url>/api/art
+VITE_FUNCTION_KEY_GETBYID=<your-azure-function-key>
 ```
+
+#### 3. Run the app
+```bash
+npm run dev
+```
+
+### Run tests
+```bash
+npm run test
+```
+
+## ☁️ Backend (Azure Functions)
+
+This project uses Azure Functions as a serverless backend, which:
+
+- Serves artwork metadata from Azure Table Storage
+- Provides signed URLs to images stored in Azure Blob Storage
+- Exposes HTTP-triggered endpoints consumed by the frontend (e.g., `/api/getArtImages`, `/api/art/{id}`)
+
+You can find the function source code in the: [holoni-celestial-function](https://github.com/inoloh/holoni-celestial-function.git).

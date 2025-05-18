@@ -1,24 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+type NavbarProps = {
+  isOpen: boolean;
+  closeMenu: () => void;
+};
+
+const Navbar = ({ isOpen, closeMenu }: NavbarProps) => {
   return (
-    <nav className="flex justify-center space-x-50">
-      <Link
-        to="/"
-        className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-      >
+    <nav
+      className={`${isOpen ? 'block' : 'hidden'} md:flex gap-x-90 text-gray-700 font-bold text-xl`}
+    >
+      <Link to="/" className="px-3 py-2" onClick={closeMenu}>
         Home
       </Link>
-      <Link
-        to="/about"
-        className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-      >
+      <Link to="/about" className="px-3 py-2" onClick={closeMenu}>
         About
       </Link>
-      <Link
-        to="/art"
-        className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-      >
+      <Link to="/art" className="px-3 py-2" onClick={closeMenu}>
         Art
       </Link>
     </nav>
