@@ -7,11 +7,16 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="flex px-4 py-3 justify-center">
-      <Hamburger isOpen={isOpen} toggle={toggleMenu} />
-      <Navbar isOpen={isOpen} closeMenu={() => setIsOpen(false)}></Navbar>
+    <header className="w-full px-4 py-3">
+      <div className="max-w-screen-md mx-auto flex flex-col items-center">
+        <Hamburger isOpen={isOpen} toggle={toggleMenu} />
+        <div className="w-full">
+          <Navbar isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
+        </div>
+      </div>
     </header>
   );
 };
+
 
 export default Header;

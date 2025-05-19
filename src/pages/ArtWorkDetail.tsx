@@ -2,26 +2,36 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Artwork } from '../interfaces/Artwork';
 import { fetchArtImageById } from '../services/ArtService';
+import Button from '../components/Button';
+import Spinner from '../components/Spinner';
 
 const ArtWorkDetail = () => {
   const { id } = useParams();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   const navigate = useNavigate();
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    setLoading(true);
+    setError(null); // reset error on new fetch
+
     fetchArtImageById(Number(id))
       .then((data) => {
         console.log('Fetched image:', data);
         setArtwork(data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
+        setError('Failed to load artwork.');
+        setLoading(false);
       });
   }, [id]);
 
-  if (!artwork) return <p>Artwork not found</p>;
+  if (loading) return <Spinner/>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
+  if (!artwork) return <p className="text-center">Artwork not found</p>;
 
   return (
     <div className="max-w-xl mx-auto p-4">
@@ -35,12 +45,11 @@ const ArtWorkDetail = () => {
         <p className="text-gray-700 text-sm">{artwork.year}</p>
         <p className="text-gray-700 text-sm">{artwork.description}</p>
       </div>
-      <button
+      <Button
         onClick={() => navigate(-1)}
-        className="mt-6 px-4 py-2 hover:bg-pink-400 rounded text-sm"
-      >
-        ← Back to Gallery
-      </button>
+        label={'← Back to Gallery'}
+        additionalClasses="hover:bg-pink-400"
+      />
     </div>
   );
 };

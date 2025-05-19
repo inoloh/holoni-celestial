@@ -1,8 +1,15 @@
 interface ButtonProps {
   onClick: () => void;
   label: string;
+  additionalClasses?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
-  return <button onClick={onClick}>{label}</button>;
+const Button = ({ onClick, label, additionalClasses }: ButtonProps) => {
+  return (
+    <button onClick={onClick} className={`mt-6 px-4 py-2 rounded text-sm ${additionalClasses}`}>
+      {label}
+    </button>
+  );
 };
+
+export default Button;
