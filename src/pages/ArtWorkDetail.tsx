@@ -1,35 +1,17 @@
-import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Artwork } from '../interfaces/Artwork';
-import { fetchArtImageById } from '../services/ArtService';
+import { getArtworkByIdUrl } from '../api/artEndpoints';
 import Button from '../components/Button';
 import Spinner from '../components/Spinner';
+import { useFetch } from '../hooks/useFetch';
 
 const ArtWorkDetail = () => {
   const { id } = useParams();
-  const [artwork, setArtwork] = useState<Artwork | null>(null);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const apiUrl: string = getArtworkByIdUrl(id!);
+  const { data: artwork, loading, error } = useFetch<Artwork>(apiUrl);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null); // reset error on new fetch
-
-    fetchArtImageById(Number(id))
-      .then((data) => {
-        console.log('Fetched image:', data);
-        setArtwork(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setError('Failed to load artwork.');
-        setLoading(false);
-      });
-  }, [id]);
-
-  if (loading) return <Spinner/>;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-center text-red-500">{error}</p>;
   if (!artwork) return <p className="text-center">Artwork not found</p>;
 
