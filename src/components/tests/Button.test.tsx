@@ -6,7 +6,7 @@ import Button from '../Button';
 describe('Button', () => {
   it('renders the button with correct label', () => {
     render(<Button onClick={() => {}} label="Click me" />);
-    expect(screen.getByText('Click me')).toBeInTheDocument();
+    expect(screen.getByText('Dont click me')).toBeInTheDocument();
   });
 
   it('calls onClick when clicked', async () => {
