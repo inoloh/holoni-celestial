@@ -16,15 +16,16 @@ const ArtWorkDetail = () => {
   if (!artwork) return <p className="text-center">Artwork not found</p>;
 
   return (
-    <div className="max-w-xl mx-auto p-4">
+    <section aria-labelledby="detail-heading" className="max-w-xl mx-auto p-4">
+      <h2 id="detail-heading" className="sr-only">Details about artwork {artwork.title}</h2>
       <img
         src={artwork.url}
         alt={artwork.title || `Artwork ${id}`}
         className="mx-auto mb-4 rounded shadow-md"
       />
-      <div className="text-left">
+      <div className="text-left text-gray-700">
         <h1 className="text-lg font-bold">{artwork.title}</h1>
-        <p className="text-gray-700 text-sm">{artwork.year}</p>
+        <p className=" text-sm">{artwork.year}</p>
         <p className="text-gray-700 text-sm">{artwork.description}</p>
       </div>
       <Button
@@ -32,7 +33,7 @@ const ArtWorkDetail = () => {
         label={'← Back to Gallery'}
         additionalClasses="hover:bg-pink-400"
       />
-    </div>
+    </section>
   );
 };
 

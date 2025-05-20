@@ -25,9 +25,10 @@ const Art = () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4">
+    <section aria-labelledby="gallery-heading" className="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4">
+      <h2 id="gallery-heading" className="sr-only">Artwork Gallery</h2>
       <Gallery artworks={artworks!} />
-    </div>
+    </section>
   );
 };
 
