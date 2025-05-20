@@ -24,7 +24,9 @@ npm install
 ```
 
 #### 2. Configure environment variables
+
 Create a .env based on the example below
+
 ```bash
 VITE_API_URL_GETALL=https://<your-azure-function-url>/api/getArtImages
 VITE_FUNCTION_KEY_GETALL=<your-azure-function-key>
@@ -33,11 +35,13 @@ VITE_FUNCTION_KEY_GETBYID=<your-azure-function-key>
 ```
 
 #### 3. Run the app
+
 ```bash
 npm run dev
 ```
 
 ### Run tests
+
 ```bash
 npm run test
 ```

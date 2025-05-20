@@ -1,9 +1,9 @@
 type HamburgerProps = {
-    isOpen: boolean;
-    toggle: () => void;
-  };
+  isOpen: boolean;
+  toggle: () => void;
+};
 
-const Hamburger = ({isOpen, toggle}: HamburgerProps) => {
+const Hamburger = ({ isOpen, toggle }: HamburgerProps) => {
   return (
     <button onClick={toggle} className="md:hidden focus:outline-none" aria-label="Toggle menu">
       <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

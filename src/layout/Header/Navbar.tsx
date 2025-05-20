@@ -28,5 +28,4 @@ const Navbar = ({ isOpen, closeMenu }: NavbarProps) => {
   );
 };
 
-
 export default Navbar;

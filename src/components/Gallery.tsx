@@ -24,5 +24,4 @@ const Gallery = ({ artworks }: GalleryProps) => {
   );
 };
 
-
 export default Gallery;

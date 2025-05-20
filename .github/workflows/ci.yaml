@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-test:
@@ -23,6 +26,12 @@ jobs:
 
       - name: Run vitest tests
         run: npm run test -- --watch=false
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run formating with Pretter
+        run: npm run format
 
       - name: Build app
         run: npm run build

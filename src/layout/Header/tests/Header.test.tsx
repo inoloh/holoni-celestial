@@ -47,7 +47,6 @@ describe('Header (mobile view)', () => {
   });
 });
 
-
 describe('Header (desktop view)', () => {
   it('shows nav links', async () => {
     render(
@@ -59,6 +58,5 @@ describe('Header (desktop view)', () => {
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Art' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
-  })
+  });
 });
-

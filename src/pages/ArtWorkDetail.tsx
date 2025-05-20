@@ -17,7 +17,9 @@ const ArtWorkDetail = () => {
 
   return (
     <section aria-labelledby="detail-heading" className="max-w-xl mx-auto p-4">
-      <h2 id="detail-heading" className="sr-only">Details about artwork {artwork.title}</h2>
+      <h2 id="detail-heading" className="sr-only">
+        Details about artwork {artwork.title}
+      </h2>
       <img
         src={artwork.url}
         alt={artwork.title || `Artwork ${id}`}

@@ -12,18 +12,18 @@ describe('Gallery', () => {
     render(
       <MemoryRouter>
         <Gallery artworks={artworks} />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByAltText('Something great')).toBeInTheDocument();
     expect(screen.getByAltText('Something OK')).toBeInTheDocument();
   });
 
-    it('renders without crashing when list is empty', () => {
+  it('renders without crashing when list is empty', () => {
     render(
       <MemoryRouter>
         <Gallery artworks={[]} />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
@@ -32,5 +32,4 @@ describe('Gallery', () => {
 
   // TODO test the fetch part
   // TODO test what happens if one artwork fails, should it render the others
-
 });

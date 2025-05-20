@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-export function useFetch<T, R = unknown>(
-  url: string,
-  transform?: (data: R) => T
-) {
+export function useFetch<T, R = unknown>(url: string, transform?: (data: R) => T) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +11,7 @@ export function useFetch<T, R = unknown>(
 
     fetch(url)
       .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
+        if (!res.ok) throw new Error('Network response was not ok');
         return res.json() as Promise<R>;
       })
       .then((json) => {
