@@ -45,7 +45,7 @@ jobs:
           output_location: "dist" # Built app content directory - optional
           github_id_token: ${{ steps.idtoken.outputs.result }}
         env: 
-          VITE_FUNCTION_KEY_GETALL: ${{ secrets.VITE_FUNCTION_KEY_GETALLVITE_FUNCTION_KEY_GETALL }}
+          VITE_FUNCTION_KEY_GETALL: ${{ secrets.VITE_FUNCTION_KEY_GETALL }}
           VITE_FUNCTION_KEY_GETBYID: ${{ secrets.VITE_FUNCTION_KEY_GETBYID }}
           VITE_API_URL_GETALL: ${{ secrets.VITE_API_URL_GETALL }}
           VITE_API_URL_GETBYID: ${{ secrets.VITE_API_URL_GETBYID }}
