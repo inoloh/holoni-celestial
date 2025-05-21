@@ -30,6 +30,5 @@ describe('Gallery', () => {
     // TODO what is showing if no artworks? test that
   });
 
-  // TODO test the fetch part
   // TODO test what happens if one artwork fails, should it render the others
 });

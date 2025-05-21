@@ -10,6 +10,7 @@ A modern React + TypeScript web application for browsing and viewing artwork. Bu
 - **Backend**: Azure Functions (Node.js)
 - **Storage**: Azure Table Storage (metadata), Azure Blob Storage (images)
 - **Tooling**: Prettier, GitHub Actions, Vitest
+- **CI/CD**: Github actions
 
 ---
 
@@ -28,10 +29,11 @@ npm install
 Create a .env based on the example below
 
 ```bash
-VITE_API_URL_GETALL=https://<your-azure-function-url>/api/getArtImages
-VITE_FUNCTION_KEY_GETALL=<your-azure-function-key>
-VITE_API_URL_GETBYID=https://<your-azure-function-url>/api/art
-VITE_FUNCTION_KEY_GETBYID=<your-azure-function-key>
+VITE_FUNCTION_KEY_GETALL=""
+VITE_FUNCTION_KEY_GETBYID=""
+VITE_API_URL_GET_ARTWORKS="api/art"
+VITE_API_URL_GET_ASSETS="api/assets"
+VITE_API_BASEURL=""
 ```
 
 #### 3. Run the app
@@ -46,7 +48,7 @@ npm run dev
 npm run test
 ```
 
-## ☁️ Backend (Azure Functions)
+## Backend (Azure Functions)
 
 This project uses Azure Functions as a serverless backend, which:
 
@@ -55,3 +57,15 @@ This project uses Azure Functions as a serverless backend, which:
 - Exposes HTTP-triggered endpoints consumed by the frontend (e.g., `/api/getArtImages`, `/api/art/{id}`)
 
 You can find the function source code in the: [holoni-celestial-function](https://github.com/inoloh/holoni-celestial-function.git).
+
+## CI/CD Pipeline
+This project uses GitHub Actions for continuous integration and deployment:
+
+- **CI (`ci.yml`)**
+  - Triggers on every pull request to `main` and on pushes to `development`
+  - Runs all tests and ensures build integrity
+
+- **Deploy (`deploy.yml`)**
+  - Triggers on push to `main`
+  - Deploys the app to Azure Static Web Apps
+

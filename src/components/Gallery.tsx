@@ -13,8 +13,10 @@ const Gallery = ({ artworks }: GalleryProps) => {
           <Link to={`/art/${art.id}`}>
             <img src={art.url} alt={art.title ?? 'Artwork'} />
             {art.title && (
-              <div className="absolute bg-white inset-0 opacity-0 group-hover:opacity-80 transition duration-300 flex items-end p-4">
-                <span className="text-black text-xl font-semibold">{art.title}</span>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <span className="text-white text-xl font-semibold text-center drop-shadow-md">
+                  {art.title}
+                </span>
               </div>
             )}
           </Link>
