@@ -44,7 +44,7 @@ jobs:
           VITE_FUNCTION_KEY_GETBYID: ${{ secrets.VITE_FUNCTION_KEY_GETBYID }}
           VITE_API_URL_GET_ARTWORKS: ${{ secrets.VITE_API_URL_GET_ARTWORKS }}
           VITE_API_URL_GET_ASSETS: ${{ secrets.VITE_API_URL_GET_ASSETS }}
-          VITE_API_BASEURL: ${{ secrets.VITE_UI_ASSETS_BASE_URL }}
+          VITE_API_BASEURL: ${{ secrets.VITE_API_BASEURL }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
