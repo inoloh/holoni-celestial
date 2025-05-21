@@ -42,9 +42,9 @@ jobs:
         env: 
           VITE_FUNCTION_KEY_GETALL: ${{ secrets.VITE_FUNCTION_KEY_GETALL }}
           VITE_FUNCTION_KEY_GETBYID: ${{ secrets.VITE_FUNCTION_KEY_GETBYID }}
-          VITE_API_URL_GETALL: ${{ secrets.VITE_API_URL_GETALL }}
-          VITE_API_URL_GETBYID: ${{ secrets.VITE_API_URL_GETBYID }}
-          VITE_UI_ASSETS_BASE_URL: ${{ secrets.VITE_UI_ASSETS_BASE_URL }}
+          VITE_API_URL_GET_ARTWORKS: ${{ secrets.VITE_API_URL_GET_ARTWORKS }}
+          VITE_API_URL_GET_ASSETS: ${{ secrets.VITE_API_URL_GET_ASSETS }}
+          VITE_API_BASEURL: ${{ secrets.VITE_UI_ASSETS_BASE_URL }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
